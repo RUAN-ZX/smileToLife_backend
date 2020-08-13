@@ -146,9 +146,9 @@ class srvUserA(models.Model):
     srvUserA_Type = models.CharField(max_length=1)
 
     # 课程ID
-    srvUserA_ArvId = models.CharField(max_length=6) 
+    srvUserA_SrvId = models.CharField(max_length=6) 
     # 课程种类
-    srvUserA_ArvType = models.CharField(max_length=1)
+    srvUserA_SrvType = models.CharField(max_length=1)
 
     # 报名时间
     srvUserA_Time = models.DateTimeField(default=now())
@@ -218,9 +218,9 @@ class srvUserC(models.Model):
     srvUserC_Type = models.CharField(max_length=1)
 
     # 课程ID
-    srvUserC_CrvId = models.CharField(max_length=6) 
+    srvUserC_SrvId = models.CharField(max_length=6) 
     # 课程种类
-    srvUserC_CrvType = models.CharField(max_length=1)
+    srvUserC_SrvType = models.CharField(max_length=1)
 
     # 报名时间
     srvUserC_Time = models.DateTimeField(default=now())
