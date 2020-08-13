@@ -147,7 +147,10 @@ class srvS(models.Model):
     # 还需要一个表记录 谁 收藏了哪个课程 类似点赞的操作 类似评论的
     srvS_Collectnum = models.IntegerField(default=0)
     #另外一个表记录评论具体信息
-    srvS_Collectnum = models.IntegerField(default=0)
+
+    # 价钱
+    srvS_Price= models.CharField(default='0.0',max_length=6)
+
     # 创建时间
     srvS_Time = models.DateTimeField(default=now())
 
@@ -219,7 +222,9 @@ class srvA(models.Model):
     # 还需要一个表记录 谁 收藏了哪个课程 类似点赞的操作 类似评论的
     srvA_Collectnum = models.IntegerField(default=0)
     #另外一个表记录评论具体信息
-    srvA_Collectnum = models.IntegerField(default=0)
+
+
+    srvA_Price= models.CharField(default='0.0',max_length=6)
     # 创建时间
     srvA_Time = models.DateTimeField(default=now())
 
@@ -292,7 +297,8 @@ class srvC(models.Model):
     # 还需要一个表记录 谁 收藏了哪个课程 类似点赞的操作 类似评论的
     srvC_Collectnum = models.IntegerField(default=0)
     #另外一个表记录评论具体信息
-    srvC_Collectnum = models.IntegerField(default=0)
+
+    srvC_Price= models.CharField(default='0.0',max_length=6)
     # 创建时间
     srvC_Time = models.DateTimeField(default=now())
 
@@ -365,6 +371,9 @@ class userR(models.Model):
     userR_Gender = models.BooleanField(default=True)
 
     userR_Time = models.DateTimeField(default=now())
+
+    # 普通用户可作为标签 服务提供者可作为资历说明
+    userR_Label = models.CharField(blank=True,max_length=40)
     # 擅长领域
     userR_Type = models.CharField(max_length=8)
     objects = models.manager.QuerySet
@@ -395,6 +404,8 @@ class userS(models.Model):
     userS_Email = models.EmailField(unique=True)
     userS_Gender = models.BooleanField(default=True)
     userS_Time = models.DateTimeField(default=now())
+
+    userS_Label = models.CharField(blank=True, max_length=40)
     # 擅长领域
     userS_Type = models.CharField(max_length=8)
     objects = models.manager.QuerySet
@@ -404,13 +415,13 @@ class userLikeS(models.Model):
 
 
     # 关注的人
-    userLikeS_User = models.CharField(max_length=6)
+    userLikeS_ERId = models.CharField(max_length=6)
     # 关注的人种类
-    userLikeS_UserType = models.CharField(max_length=1)
+    userLikeS_ERType = models.CharField(max_length=1)
 
     # 被关注的人的Id
-    userLikeS_UserId = models.CharField(max_length=6)
-    userLikeS_UserType = models.CharField(max_length=1)
+    userLikeS_EEId = models.CharField(max_length=6)
+    userLikeS_EEType = models.CharField(max_length=1)
     
     
     userLikeS_Time = models.DateTimeField(default=now())
@@ -446,6 +457,8 @@ class userA(models.Model):
     userA_Email = models.EmailField(unique=True)
     userA_Gender = models.BooleanField(default=True)
     userA_Time = models.DateTimeField(default=now())
+
+    userA_Label = models.CharField(blank=True, max_length=40)
     # 擅长领域
     userA_Type = models.CharField(max_length=8)
     objects = models.manager.QuerySet
@@ -453,13 +466,13 @@ class userA(models.Model):
 class userLikeA(models.Model):
     userLikeA_Id = models.AutoField(primary_key=True)
     # 关注的人
-    userLikeA_User = models.CharField(max_length=6)
+    userLikeA_ER = models.CharField(max_length=6)
     # 关注的人种类
-    userLikeA_UserType = models.CharField(max_length=1)
+    userLikeA_ERType = models.CharField(max_length=1)
 
     # 被关注的人的Id
-    userLikeA_UserId = models.CharField(max_length=6)
-    userLikeA_UserType = models.CharField(max_length=1)
+    userLikeA_EEId = models.CharField(max_length=6)
+    userLikeA_EEType = models.CharField(max_length=1)
     
     
     userLikeA_Time = models.DateTimeField(default=now())
@@ -496,6 +509,8 @@ class userB(models.Model):
     userB_Email = models.EmailField(unique=True)
     userB_Gender = models.BooleanField(default=True)
     userB_Time = models.DateTimeField(default=now())
+
+    userB_Label = models.CharField(blank=True, max_length=40)
     # 擅长领域
     userB_Type = models.CharField(max_length=8)
     objects = models.manager.QuerySet
@@ -505,13 +520,13 @@ class userLikeB(models.Model):
 
 
     # 关注的人
-    userLikeB_User = models.CharField(max_length=6)
+    userLikeB_ER = models.CharField(max_length=6)
     # 关注的人种类
-    userLikeB_UserType = models.CharField(max_length=1)
+    userLikeB_ERType = models.CharField(max_length=1)
 
     # 被关注的人的Id
-    userLikeB_UserId = models.CharField(max_length=6)
-    userLikeB_UserType = models.CharField(max_length=1)
+    userLikeB_EEId = models.CharField(max_length=6)
+    userLikeB_EEType = models.CharField(max_length=1)
     
     
     userLikeB_Time = models.DateTimeField(default=now())
@@ -547,6 +562,10 @@ class userC(models.Model):
     userC_Email = models.EmailField(unique=True)
     userC_Gender = models.BooleanField(default=True)
     userC_Time = models.DateTimeField(default=now())
+
+
+    userC_Label = models.CharField(blank=True, max_length=40)
+
     # 擅长领域
     userC_Type = models.CharField(max_length=8)
     objects = models.manager.QuerySet
@@ -556,13 +575,13 @@ class userLikeC(models.Model):
 
 
     # 关注的人
-    userLikeC_User = models.CharField(max_length=6)
+    userLikeC_ER = models.CharField(max_length=6)
     # 关注的人种类
-    userLikeC_UserType = models.CharField(max_length=1)
+    userLikeC_ERType = models.CharField(max_length=1)
 
     # 被关注的人的Id
-    userLikeC_UserId = models.CharField(max_length=6)
-    userLikeC_UserType = models.CharField(max_length=1)
+    userLikeC_EEId = models.CharField(max_length=6)
+    userLikeC_EEType = models.CharField(max_length=1)
     
     
     userLikeC_Time = models.DateTimeField(default=now())
@@ -600,6 +619,8 @@ class userD(models.Model):
     userD_Phone = models.CharField(max_length=12,default='13713800000',unique=True)
     userD_Email = models.EmailField(unique=True)
     userD_Gender = models.BooleanField(default=True)
+
+    userD_Label = models.CharField(blank=True, max_length=40)
     userD_Time = models.DateTimeField(default=now())
     objects = models.manager.QuerySet
 
