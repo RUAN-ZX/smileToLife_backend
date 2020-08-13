@@ -25,12 +25,12 @@ class fsComment(models.Model):
     fsComment_Text = models.CharField(max_length=144,default="巧了 我也是这样的")
 
     # 评论人
-    fsComment_User = models.CharField(max_length=6)
+    fsComment_User = models.CharField(max_length=6,default='000000')
     # 评论人种类
-    fsComment_UserType = models.CharField(max_length=1)
+    fsComment_UserType = models.CharField(max_length=6,default='D')
 
     # 被评论fs
-    fsComment_Srv = models.CharField(max_length=6)
+    fsComment_Srv = models.CharField(max_length=6,default='000000')
 
     fsComment_Time = models.DateTimeField(default=now())
     objects = models.manager.QuerySet
@@ -43,9 +43,9 @@ class fs(models.Model):
     fs_Text = models.CharField(max_length=500)
 
     # 发心事的人
-    fs_User = models.CharField(max_length=6)
+    fs_User = models.CharField(max_length=6,default='000000')
     # 心事的人种类
-    fs_UserType = models.CharField(max_length=1)
+    fs_UserType = models.CharField(max_length=6,default='D')
 
     fs_Type = models.CharField(max_length=8)# 1~8 对应八种不同的分类 每个人的擅长领域也是同样如此
 
@@ -58,12 +58,12 @@ class fsLike(models.Model):
 
 
     # 心事关注人
-    fsLike_User = models.CharField(max_length=6)
+    fsLike_User = models.CharField(max_length=6,default='000000')
     # 心事关注人种类
-    fsLike_UserType = models.CharField(max_length=1)
+    fsLike_UserType = models.CharField(max_length=6,default='D')
 
     # 被关注的心事的Id
-    fsLike_AnsId = models.CharField(max_length=6)
+    fsLike_AnsId = models.CharField(max_length=6,default='000000')
     fsLike_Time = models.DateTimeField(default=now())
     
     objects = models.manager.QuerySet
@@ -77,9 +77,9 @@ class ques(models.Model):
     ques_Text = models.CharField(max_length=144)
 
     # 提问人
-    ques_User = models.CharField(max_length=6)
+    ques_User = models.CharField(max_length=6,default='000000')
     # 提问人种类
-    ques_UserType = models.CharField(max_length=1)
+    ques_UserType = models.CharField(max_length=6,default='D')
 
     ques_Time = models.DateTimeField(default=now())
     objects = models.manager.QuerySet
@@ -89,12 +89,12 @@ class quesLike(models.Model):
 
 
     # 点赞人
-    quesLike_User = models.CharField(max_length=6)
+    quesLike_User = models.CharField(max_length=6,default='000000')
     # 点赞人种类
-    quesLike_UserType = models.CharField(max_length=1)
+    quesLike_UserType = models.CharField(max_length=6,default='D')
 
     # 被点赞的回答的Id
-    quesLike_AnsId = models.CharField(max_length=6)
+    quesLike_AnsId = models.CharField(max_length=6,default='000000')
     quesLike_Time = models.DateTimeField(default=now())
     
     objects = models.manager.QuerySet
@@ -107,12 +107,12 @@ class ans(models.Model):
     ans_Text = models.CharField(max_length=144)
 
     # 回答人
-    ans_User = models.CharField(max_length=6)
+    ans_User = models.CharField(max_length=6,default='000000')
     # 回答人种类
-    ans_UserType = models.CharField(max_length=1)
+    ans_UserType = models.CharField(max_length=6,default='D')
 
     # 问题的Id
-    ans_QuesId = models.CharField(max_length=6)
+    ans_QuesId = models.CharField(max_length=6,default='000000')
 
     ans_Time = models.DateTimeField(default=now())
     objects = models.manager.QuerySet
@@ -123,12 +123,12 @@ class ansLike(models.Model):
 
 
     # 点赞人
-    ansLike_User = models.CharField(max_length=6)
+    ansLike_User = models.CharField(max_length=6,default='000000')
     # 点赞人种类
-    ansLike_UserType = models.CharField(max_length=1)
+    ansLike_UserType = models.CharField(max_length=6,default='D')
 
     # 被点赞的回答的Id
-    ansLike_AnsId = models.CharField(max_length=6)
+    ansLike_AnsId = models.CharField(max_length=6,default='000000')
     ansLike_Time = models.DateTimeField(default=now())
     
     objects = models.manager.QuerySet
@@ -162,17 +162,16 @@ class srvS(models.Model):
 class srvCommentS(models.Model):
     srvCommentS_Id = models.AutoField(primary_key=True)
     srvCommentS_Text = models.CharField(max_length=144,default="还可以")
-    srvCommentS_Star = models.CharField(max_length=1) # 0~A 10个档次刚好
+    srvCommentS_Star = models.CharField(max_length=6,default='D') # 0~A 10个档次刚好
 
     # 评论人
-    srvCommentS_User = models.CharField(max_length=6)
+    srvCommentS_UserId = models.CharField(max_length=6,default='000000')
     # 评论人种类
-    srvCommentS_UserType = models.CharField(max_length=1)
+    srvCommentS_UserType = models.CharField(max_length=1,default='D')
 
     # 被评论srv
-    srvCommentS_Srv = models.CharField(max_length=6)
-    # 被评论srv种类
-    srvCommentS_SrvType = models.CharField(max_length=1)
+    srvCommentS_SrvId = models.CharField(max_length=6,default='000000')
+
 
     srvCommentS_Time = models.DateTimeField(default=now())
     objects = models.manager.QuerySet
@@ -182,12 +181,12 @@ class srvLikeS(models.Model):
     srvLikeS_Id = models.AutoField(primary_key=True)
 
     # 课程收藏关注人
-    srvLikeS_User = models.CharField(max_length=6)
+    srvLikeS_User = models.CharField(max_length=6,default='000000')
     # 课程收藏人种类
-    srvLikeS_UserType = models.CharField(max_length=1)
+    srvLikeS_UserType = models.CharField(max_length=6,default='D')
 
     # 被收藏的课程的Id
-    srvLikeS_AnsId = models.CharField(max_length=6)
+    srvLikeS_AnsId = models.CharField(max_length=6,default='000000')
     srvLikeS_Time = models.DateTimeField(default=now())
     
     objects = models.manager.QuerySet
@@ -197,14 +196,14 @@ class srvUserS(models.Model):
     # 记录ID
     srvUserS_RecordId = models.AutoField(primary_key=True)
     # 上课的人
-    srvUserS_Id = models.CharField(max_length=6)
+    srvUserS_Id = models.CharField(max_length=6,default='000000')
     # 上课的人 种类 RSABCDE
-    srvUserS_Type = models.CharField(max_length=1)
+    srvUserS_Type = models.CharField(max_length=6,default='D')
 
     # 课程ID
-    srvUserS_SrvId = models.CharField(max_length=6) 
+    srvUserS_SrvId = models.CharField(max_length=6,default='000000') 
     # 课程种类
-    srvUserS_SrvType = models.CharField(max_length=1)
+    srvUserS_SrvType = models.CharField(max_length=6,default='D')
 
     # 报名时间
     srvUserS_Time = models.DateTimeField(default=now())
@@ -232,21 +231,21 @@ class srvA(models.Model):
     srvA_Type = models.CharField(max_length=8) 
     objects = models.manager.QuerySet
 
-
+# 对A类课的评价
 class srvCommentA(models.Model):
     srvCommentA_Id = models.AutoField(primary_key=True)
     srvCommentA_Text = models.CharField(max_length=144,default="还可以")
-    srvCommentA_Star = models.CharField(max_length=1) # 0~A 10个档次刚好
+    srvCommentA_Star = models.CharField(max_length=6,default='D') # 0~A 10个档次刚好
 
     # 评论人
-    srvCommentA_User = models.CharField(max_length=6)
+    srvCommentA_User = models.CharField(max_length=6,default='000000')
     # 评论人种类
-    srvCommentA_UserType = models.CharField(max_length=1)
+    srvCommentA_UserType = models.CharField(max_length=6,default='D')
 
     # 被评论srv
-    srvCommentA_Srv = models.CharField(max_length=6)
-    # 被评论srv种类
-    srvCommentA_SrvType = models.CharField(max_length=1)
+    srvCommentA_Srv = models.CharField(max_length=6,default='000000')
+
+
 
     srvCommentA_Time = models.DateTimeField(default=now())
 
@@ -257,29 +256,29 @@ class srvLikeA(models.Model):
     srvLikeA_Id = models.AutoField(primary_key=True)
 
     # 课程收藏关注人
-    srvLikeA_User = models.CharField(max_length=6)
+    srvLikeA_User = models.CharField(max_length=6,default='000000')
     # 课程收藏人种类
-    srvLikeA_UserType = models.CharField(max_length=1)
+    srvLikeA_UserType = models.CharField(max_length=6,default='D')
 
     # 被收藏的课程的Id
-    srvLikeA_AnsId = models.CharField(max_length=6)
+    srvLikeA_AnsId = models.CharField(max_length=6,default='000000')
     srvLikeA_Time = models.DateTimeField(default=now())
     
     objects = models.manager.QuerySet
 
 # 上课记录 AABC--------------------------------------------------------------
+# A 对A类课的user上课记录
 class srvUserA(models.Model):
     # 记录ID
     srvUserA_RecordId = models.AutoField(primary_key=True)
     # 上课的人
-    srvUserA_Id = models.CharField(max_length=6)
+    srvUserA_Id = models.CharField(max_length=6,default='000000')
     # 上课的人 种类 RAABCDE
-    srvUserA_Type = models.CharField(max_length=1)
+    srvUserA_Type = models.CharField(max_length=6,default='D')
 
     # 课程ID
-    srvUserA_SrvId = models.CharField(max_length=6) 
-    # 课程种类
-    srvUserA_SrvType = models.CharField(max_length=1)
+    srvUserA_SrvId = models.CharField(max_length=6,default='000000') 
+
 
     # 报名时间
     srvUserA_Time = models.DateTimeField(default=now())
@@ -310,17 +309,16 @@ class srvC(models.Model):
 class srvCommentC(models.Model):
     srvCommentC_Id = models.AutoField(primary_key=True)
     srvCommentC_Text = models.CharField(max_length=144,default="还可以")
-    srvCommentC_Star = models.CharField(max_length=1) # 0~C 10个档次刚好
+    srvCommentC_Star = models.CharField(max_length=6,default='D') # 0~C 10个档次刚好
 
     # 评论人
-    srvCommentC_User = models.CharField(max_length=6)
+    srvCommentC_User = models.CharField(max_length=6,default='000000')
     # 评论人种类
-    srvCommentC_UserType = models.CharField(max_length=1)
+    srvCommentC_UserType = models.CharField(max_length=6,default='D')
 
     # 被评论srv
-    srvCommentC_Srv = models.CharField(max_length=6)
-    # 被评论srv种类
-    srvCommentC_SrvType = models.CharField(max_length=1)
+    srvCommentC_Srv = models.CharField(max_length=6,default='000000')
+
 
     srvCommentC_Time = models.DateTimeField(default=now())
     objects = models.manager.QuerySet
@@ -330,12 +328,12 @@ class srvLikeC(models.Model):
     srvLikeC_Id = models.AutoField(primary_key=True)
 
     # 课程收藏关注人
-    srvLikeC_User = models.CharField(max_length=6)
+    srvLikeC_UserId = models.CharField(max_length=6,default='000000')
     # 课程收藏人种类
-    srvLikeC_UserType = models.CharField(max_length=1)
+    srvLikeC_UserType = models.CharField(max_length=6,default='D')
 
     # 被收藏的课程的Id
-    srvLikeC_CnsId = models.CharField(max_length=6)
+    srvLikeC_CnsId = models.CharField(max_length=6,default='000000')
     srvLikeC_Time = models.DateTimeField(default=now())
     
     objects = models.manager.QuerySet
@@ -345,14 +343,12 @@ class srvUserC(models.Model):
     # 记录ID
     srvUserC_RecordId = models.AutoField(primary_key=True)
     # 上课的人
-    srvUserC_Id = models.CharField(max_length=6)
+    srvUserC_Id = models.CharField(max_length=6,default='000000')
     # 上课的人 种类 RCCCCDE
-    srvUserC_Type = models.CharField(max_length=1)
+    srvUserC_Type = models.CharField(max_length=6,default='D')
 
     # 课程ID
-    srvUserC_SrvId = models.CharField(max_length=6) 
-    # 课程种类
-    srvUserC_SrvType = models.CharField(max_length=1)
+    srvUserC_SrvId = models.CharField(max_length=6,default='000000') 
 
     # 报名时间
     srvUserC_Time = models.DateTimeField(default=now())
@@ -410,18 +406,18 @@ class userS(models.Model):
     userS_Type = models.CharField(max_length=8)
     objects = models.manager.QuerySet
 
+# 针对S类人的userLike
 class userLikeS(models.Model):
     userLikeS_Id = models.AutoField(primary_key=True)
 
 
     # 关注的人
-    userLikeS_ERId = models.CharField(max_length=6)
+    userLikeS_ERId = models.CharField(max_length=6,default='000000')
     # 关注的人种类
-    userLikeS_ERType = models.CharField(max_length=1)
+    userLikeS_ERType = models.CharField(max_length=6,default='D')
 
     # 被关注的人的Id
-    userLikeS_EEId = models.CharField(max_length=6)
-    userLikeS_EEType = models.CharField(max_length=1)
+    userLikeS_EEId = models.CharField(max_length=6,default='000000')
     
     
     userLikeS_Time = models.DateTimeField(default=now())
@@ -435,12 +431,11 @@ class userCommentS(models.Model):
     userCommentS_Star = models.CharField(max_length=1,default='A')
 
     # 评论人的ID
-    userCommentS_ERId = models.CharField(max_length=6)
-    userCommentS_ERType = models.CharField(max_length=1)
+    userCommentS_ERId = models.CharField(max_length=6,default='000000')
+    userCommentS_ERType = models.CharField(max_length=6,default='D')
 
     # 被评论人的ID
-    userCommentS_EEId = models.CharField(max_length=6)
-    userCommentS_EEType = models.CharField(max_length=1)
+    userCommentS_EEId = models.CharField(max_length=6,default='000000')
 
     # 评价人物的时间
     userCommentS_Time = models.DateTimeField(default=now())
@@ -466,13 +461,12 @@ class userA(models.Model):
 class userLikeA(models.Model):
     userLikeA_Id = models.AutoField(primary_key=True)
     # 关注的人
-    userLikeA_ER = models.CharField(max_length=6)
+    userLikeA_ER = models.CharField(max_length=6,default='000000')
     # 关注的人种类
-    userLikeA_ERType = models.CharField(max_length=1)
+    userLikeA_ERType = models.CharField(max_length=6,default='D')
 
     # 被关注的人的Id
-    userLikeA_EEId = models.CharField(max_length=6)
-    userLikeA_EEType = models.CharField(max_length=1)
+    userLikeA_EEId = models.CharField(max_length=6,default='000000')
     
     
     userLikeA_Time = models.DateTimeField(default=now())
@@ -486,12 +480,11 @@ class userCommentA(models.Model):
     userCommentA_star = models.CharField(max_length=1,default='A')
 
     # 评论人的ID
-    userCommentA_ERId = models.CharField(max_length=6)
-    userCommentA_ERType = models.CharField(max_length=1)
+    userCommentA_ERId = models.CharField(max_length=6,default='000000')
 
     # 被评论人的ID
-    userCommentA_EEId = models.CharField(max_length=6)
-    userCommentA_EEType = models.CharField(max_length=1)
+    userCommentA_EEId = models.CharField(max_length=6,default='000000')
+    userCommentA_EEType = models.CharField(max_length=6,default='D')
 
     # 评价人物的时间
     userCommentA_Time = models.DateTimeField(default=now())
@@ -520,13 +513,12 @@ class userLikeB(models.Model):
 
 
     # 关注的人
-    userLikeB_ER = models.CharField(max_length=6)
+    userLikeB_ER = models.CharField(max_length=6,default='000000')
     # 关注的人种类
-    userLikeB_ERType = models.CharField(max_length=1)
+    userLikeB_ERType = models.CharField(max_length=1,default='0')
 
     # 被关注的人的Id
-    userLikeB_EEId = models.CharField(max_length=6)
-    userLikeB_EEType = models.CharField(max_length=1)
+    userLikeB_EEId = models.CharField(max_length=6,default='000000')
     
     
     userLikeB_Time = models.DateTimeField(default=now())
@@ -541,12 +533,11 @@ class userCommentB(models.Model):
     userCommentB_star = models.CharField(max_length=1,default='B')
 
     # 评论人的ID
-    userCommentB_ERId = models.CharField(max_length=6)
-    userCommentB_ERType = models.CharField(max_length=1)
+    userCommentB_ERId = models.CharField(max_length=6,default='000000')
+    userCommentB_ERType = models.CharField(max_length=1,default='0')
 
     # 被评论人的ID
-    userCommentB_EEId = models.CharField(max_length=6)
-    userCommentB_EEType = models.CharField(max_length=1)
+    userCommentB_EEId = models.CharField(max_length=6,default='000000')
 
     # 评价人物的时间
     userCommentB_Time = models.DateTimeField(default=now())
@@ -575,13 +566,12 @@ class userLikeC(models.Model):
 
 
     # 关注的人
-    userLikeC_ER = models.CharField(max_length=6)
+    userLikeC_ER = models.CharField(max_length=6,default='000000')
     # 关注的人种类
-    userLikeC_ERType = models.CharField(max_length=1)
+    userLikeC_ERType = models.CharField(max_length=1,default='0')
 
     # 被关注的人的Id
-    userLikeC_EEId = models.CharField(max_length=6)
-    userLikeC_EEType = models.CharField(max_length=1)
+    userLikeC_EEId = models.CharField(max_length=6,default='000000')
     
     
     userLikeC_Time = models.DateTimeField(default=now())
@@ -593,15 +583,15 @@ class userCommentC(models.Model):
     userCommentC_Id = models.AutoField(primary_key=True)
 
     userCommentC_Text = models.CharField(max_length=144,default="还行")
-    userCommentC_Star = models.CharField(max_length=1,default='C')
+    userCommentC_Star = models.CharField(max_length=1,default='A')
 
     # 评论人的ID
-    userCommentC_ERId = models.CharField(max_length=6)
-    userCommentC_ERType = models.CharField(max_length=1)
+    # 000000是无效的！
+    userCommentC_ERId = models.CharField(max_length=6,default='000000')
+    userCommentC_ERType = models.CharField(max_length=1,default='D')
 
     # 被评论人的ID
-    userCommentC_EEId = models.CharField(max_length=6)
-    userCommentC_EEType = models.CharField(max_length=1)
+    userCommentC_EEId = models.CharField(max_length=6,default='000000')
 
     # 评价人物的时间
     userCommentC_Time = models.DateTimeField(default=now())
